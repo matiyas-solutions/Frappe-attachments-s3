@@ -284,7 +284,8 @@ def upload_existing_files_s3(name, file_name):
             method = "frappe_s3_attachment.controller.generate_file"
             # file_url = """/api/method/{0}?key={1}""".format(method, key)
             site_base_url = frappe.utils.get_url()
-            file_url = """{0}/api/method/{1}?key={2}""".format(site_base_url, method, key)
+            # file_url = """{0}/api/method/{1}?key={2}""".format(site_base_url, method, key)
+            file_url = """{0}/api/method/{1}?key={2}&file_name={3}""".format(site_base_url, method, key, doc.file_name) 
         else:
             file_url = '{}/{}/{}'.format(
                 s3_upload.S3_CLIENT.meta.endpoint_url,
